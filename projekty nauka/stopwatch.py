@@ -65,7 +65,7 @@ class Stopwatch(QWidget):
         hours = time.hour()
         minutes = time.minute()
         seconds = time.second() 
-        milliseconds = time.msec() 
+        milliseconds = time.msec() //10
         return f"{hours:02d}:{minutes:02d}:{seconds:02d}.{milliseconds:02d}"
 
     def update_time(self):
