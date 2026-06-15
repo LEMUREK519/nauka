@@ -3,5 +3,10 @@
         "marka": "hyundai",
         "model": "i30",
         "rok": 2010
+    },
+    {
+        "marka": "honda",
+        "model": "civic",
+        "rok": 2007
     }
 ]

@@ -27,9 +27,7 @@ class Auto:
             "model": self.model,
             "rok": self.rok
         }
-
-auta = []
-
+    
 def wczytaj_z_pliku():
     try:
         with open("auta.json", "r", encoding="utf-8") as plik:
@@ -43,11 +41,14 @@ def wczytaj_z_pliku():
         auto = Auto(
             element["marka"],
             element["model"],
-            element("rok")
+            element["rok"]
         )
         auta_z_pliku.append(auto)
 
     return auta_z_pliku
+
+auta = wczytaj_z_pliku()
+
 
 def panel_startowy():
     print()
@@ -94,6 +95,30 @@ def pokaz_auto():
         auto.old_car()
         print()
 
+def usun_auto():
+    if len(auta) == 0:
+        print("Nie ma zadnych aut do usuniecia")
+        return
+    
+    pokaz_auto()
+
+    try:
+        numer = int(input("Podaj numer auto do usuniecia: "))
+    except ValueError:
+        print("Musisz podac liczbe")
+        return
+    index = numer -1
+
+    if index < 0 or index >= len(auta):
+        print("Nie ma auta o takim numerze")
+        return
+    
+    usuniete_auto = auta.pop(index)
+    zapis_do_pliku()
+
+    print("Usunieto auto")
+    usuniete_auto.show_info()
+
 while True:
     
     panel_startowy()
@@ -107,6 +132,9 @@ while True:
         pokaz_auto()
             
     elif wybor == "3":
+        usun_auto()
+
+    elif wybor == "4":
         print("Koniec programu")
         break
 
