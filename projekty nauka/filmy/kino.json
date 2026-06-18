@@ -1,0 +1,14 @@
+[
+    {
+        "tytul": "przygody",
+        "autor": "jacka",
+        "rok": 1999,
+        "ocena": 2
+    },
+    {
+        "tytul": "spolnicy",
+        "autor": "kacper",
+        "rok": 1998,
+        "ocena": 10
+    }
+]
