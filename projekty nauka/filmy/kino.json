@@ -1,14 +1,16 @@
 [
     {
-        "tytul": "przygody",
-        "autor": "jacka",
-        "rok": 1999,
-        "ocena": 2
+        "tytul": "bartek",
+        "autor": "bar",
+        "rok": 1111,
+        "ocena": 2,
+        "obejrzany": false
     },
     {
-        "tytul": "spolnicy",
-        "autor": "kacper",
-        "rok": 1998,
-        "ocena": 10
+        "tytul": "kacper",
+        "autor": "kac",
+        "rok": 1584,
+        "ocena": 5,
+        "obejrzany": true
     }
 ]

@@ -1,21 +1,27 @@
 import json
 
 class Filmy:
-    def __init__(self, tytul, autor, rok ,ocena):
+    def __init__(self, tytul, autor, rok ,ocena, obejrzany=False):
         self.tytul = tytul
         self.autor = autor
         self.rok = rok
-        self.ocena = ocena  
+        self.ocena = ocena
+        self.obejrzany = obejrzany
 
     def film_info(self):
-        print(self.tytul, "-", self.autor, "-", self.rok, "-", self.ocena)
+        if self.obejrzany:
+            status = "obejrzany"
+        else:
+            status = "nieobejrzany"
+        print(self.tytul, "-", self.autor, "-", self.rok, "-", self.ocena, "-", status)
 
     def to_dict(self):
         return{
             "tytul": self.tytul,
             "autor" : self.autor,
             "rok": self.rok,
-            "ocena": self.ocena
+            "ocena": self.ocena,
+            "obejrzany": self.obejrzany
         }
 
 def wczytaj_pliku():
@@ -32,7 +38,8 @@ def wczytaj_pliku():
             element["tytul"],
             element["autor"],
             element["rok"],
-            element["ocena"]
+            element["ocena"],
+            element["obejrzany"]
         )
         filmy_z_pliku.append(film)
 
@@ -56,7 +63,9 @@ def panel_startowy():
     print("3. Wyszkaj filmy")
     print("4. Usuń filmy")
     print("5. Edytuj film")
-    print("6. Zakoncz")
+    print("6. Dodaj do obejrzane")
+    print("7. Oznacz jako nieobejrzane")
+    print("8. Zakoncz")
 
 def dodaj_film():
     tytul = input("Podaj tytul: ")
@@ -186,6 +195,61 @@ def edytuj_film():
     zapisz_do_pliku()
     print("Zmieniono film")
 
+def dodaj_do_obejrzane():
+    if len(filmy) == 0:
+        print("Nie ma filmow")
+        return
+    
+    pokaz_filmy()
+
+    try:
+        numer = int(input("Podaj numer filmu, ktory obejrzalej: "))
+    except ValueError:
+        print("Nie ma filmu o takim numerze")
+        return
+    
+    index = numer - 1
+
+    if index < 0 or index > len(filmy):
+        print("Nie ma filmu o takim numerze")
+        return
+    
+    film = filmy[index]
+    film.obejrzany = True
+
+    zapisz_do_pliku()
+
+    print("Oznaczono film jako obejrzany")
+    film.film_info()
+
+def oznacz_jako_nieobejrzany():
+    if len(filmy) == 0:
+        print("Nie ma filmow")
+        return
+
+    pokaz_filmy()
+
+    try:
+        numer = int(input("Podaj numer filmu: "))
+    except ValueError:
+        print("Musisz podac liczbe")
+        return
+
+    index = numer - 1
+
+    if index < 0 or index >= len(filmy):
+        print("Nie ma filmu o takim numerze")
+        return
+
+    film = filmy[index]
+    film.obejrzany = False
+
+    zapisz_do_pliku()
+
+    print("Oznaczono film jako nieobejrzany:")
+    film.film_info()
+
+
 while True:
    
     panel_startowy()
@@ -208,6 +272,12 @@ while True:
         edytuj_film()
 
     elif wybor == "6":
+        dodaj_do_obejrzane()
+
+    elif wybor == "7":
+        oznacz_jako_nieobejrzany()
+
+    elif wybor == "8":
         print("Koniec")
         break
     
