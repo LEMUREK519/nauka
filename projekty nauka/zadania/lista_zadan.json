@@ -1,0 +1,17 @@
+[
+    {
+        "tytul": "praca",
+        "opis": "zrobic exel",
+        "wykonane": false
+    },
+    {
+        "tytul": "pies",
+        "opis": "wyjesc z psem",
+        "wykonane": true
+    },
+    {
+        "tytul": "fff",
+        "opis": "ff",
+        "wykonane": false
+    }
+]
