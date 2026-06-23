@@ -1,0 +1,20 @@
+[
+    {
+        "imie": "kacper",
+        "telefon": 519800978,
+        "email": "kaw@wp.pl",
+        "wykonane": false
+    },
+    {
+        "imie": "julka",
+        "telefon": 758452546,
+        "email": "julka@wp.pl",
+        "wykonane": false
+    },
+    {
+        "imie": "jacek",
+        "telefon": 546845745,
+        "email": "jacek@wp.pl",
+        "wykonane": false
+    }
+]
