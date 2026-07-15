@@ -8,11 +8,19 @@ class KontoBankowe:
         print("Stan konta: ", self.saldo)
 
     def wplata(self, kwota):
+        if kwota <= 0:
+            print("Kwota nie moze byc mniejsza od zera")
+            return
+
         self.saldo += kwota
         self.historia.append(f"Wpłata: {kwota} zł")
         print("Wpłacono: ", kwota)
 
     def wyplata(self, kwota):
+        if kwota <= 0:
+            print("Kwota nie moze byc mniejsza od zera")
+            return
+        
         if kwota <= self.saldo:
             self.saldo -= kwota
             self.historia.append(f"Wypłata: {kwota} zł")
@@ -23,10 +31,18 @@ class KontoBankowe:
     def pokaz_historie(self):
         print("Historia operacji")
         
+        if len(operacja) == 0:
+            print("Brak operacji")
+            return
+        
         for operacja in self.historia:
             print(operacja)
     
     def przelew(self, inne_konto, kwota):
+        if kwota <= 0:
+            print("Kwota nie moze byc mniejsza od 0")
+            return
+        
         if kwota <= self.saldo:
             self.saldo -= kwota
             inne_konto.saldo += kwota
@@ -38,22 +54,7 @@ class KontoBankowe:
             print("Przelew wykonany")
         else:
             print("Brak srodkow na koncie")
-            
-    def to_dict(self):
-        return {
-            "wlasciciel": self.wlasciciel,
-            "saldo": self.saldo,
-            "historia": self.historia
-        }
-
-class KontoOszczednosciowe(KontoBankowe):
-    def __init__(self, wlasciciel, saldo, oprocentowanie):
-        super().__init__(wlasciciel, saldo)
-        self.oprocentowanie = oprocentowanie
-
-    def nalicz_odsetki(self):
-        odsetki = self.saldo * self.oprocentowanie / 100
-        self.saldo += odsetki
+    
 
 
 
