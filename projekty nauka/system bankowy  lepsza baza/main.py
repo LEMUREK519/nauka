@@ -7,7 +7,8 @@ from operacje import (
     wplata_na_konto,
     wyplata_na_konto,
     przelew_na_konto,
-    pokaz_historie
+    pokaz_historie,
+    usun_konto
 )
 
 konta = wczytaj_z_bazy()
@@ -17,7 +18,6 @@ while True:
 
     wybor = input("Wybierz opcje: ")
 
-    
     if wybor == "1":
         utworz_konto_bankowe(konta)
 
@@ -35,8 +35,11 @@ while True:
     
     elif wybor == "6":
         pokaz_historie(konta)
-
+    
     elif wybor == "7":
+        usun_konto(konta)
+
+    elif wybor == "8":
         print("Koniec programu")
         break
 
