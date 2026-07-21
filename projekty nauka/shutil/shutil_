@@ -1,0 +1,62 @@
+from datetime import datetime
+from pathlib import Path
+import shutil
+
+
+def utworz_nazwe_backupu():
+    teraz = datetime.now()
+    return teraz.strftime("backup_%Y-%m-%d_%H-%M-%S")
+
+
+def wykonaj_backup(folder_zrodlowy, folder_backupow):
+    nazwa_backupu = utworz_nazwe_backupu()
+    folder_docelowy = folder_backupow / nazwa_backupu
+
+    ignorowane_elementy = shutil.ignore_patterns(
+        ".git",
+        ".venv",
+        "__pycache__",
+        "*.tmp"
+    )
+
+    shutil.copytree(
+        folder_zrodlowy,
+        folder_docelowy,
+        ignore=ignorowane_elementy
+    )
+
+    return folder_docelowy
+
+
+def main():
+    zrodlo = Path(input("Podaj katalog do skopiowania: ")).resolve()
+    katalog_backupow = Path(input("Podaj katalog na backupy: ")).resolve()
+
+    if not zrodlo.exists():
+        print("Katalog źródłowy nie istnieje")
+        return
+
+    if not zrodlo.is_dir():
+        print("Źródło nie jest katalogiem")
+        return
+
+    if katalog_backupow == zrodlo:
+        print("Katalog backupów nie może być katalogiem źródłowym")
+        return
+
+    katalog_backupow.mkdir(parents=True, exist_ok=True)
+
+    try:
+        utworzony_backup = wykonaj_backup(
+            zrodlo,
+            katalog_backupow
+        )
+    except OSError as blad:
+        print(f"Nie udało się wykonać backupu: {blad}")
+        return
+
+    print(f"Backup utworzono: {utworzony_backup}")
+
+
+if __name__ == "__main__":
+    main()
