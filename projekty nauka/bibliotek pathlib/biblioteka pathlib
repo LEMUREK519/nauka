@@ -1,0 +1,72 @@
+from pathlib import Path
+
+def znajdz_duze_pliki(katalog, limit):
+    znalezione_pliki = []
+
+    for element in katalog.rglob("*"):
+        if element.is_file():
+            rozmiar_bajty = element.stat().st_size
+            rozmiar_mb = rozmiar_bajty / 1024 / 1024
+                
+            if rozmiar_mb > limit:
+                znalezione_pliki.append((element, rozmiar_mb))
+    return znalezione_pliki
+
+def main():
+    sciezka = input("Podaj sciezke do katalogu: ")
+    katalog = Path(sciezka)
+    try:
+        limit = float(input("Podaj minimalny rozmiar pliku w MB: "))
+    except ValueError:
+        print("Musisz podac liczbe")
+        return
+
+    if not katalog.exists():
+        print("Podana sciezka nie istnieje")
+        return
+
+    if not katalog.is_dir():
+        print("Podana sciezka nie jest katalogiem")
+        return
+    
+    if limit < 0:
+        print("Limit nie moze byc mniejszy od 0")
+        return
+
+    pliki = znajdz_duze_pliki(katalog, limit)
+
+    if not pliki:
+        print(f"Nie znaleziono plikow wiekszych od podanego limitu {limit} MB")
+        return
+    pliki.sort(key=lambda plik: plik[1], reverse=True)
+
+    laczny_rozmiar = 0
+    
+    raport = []
+
+    ilosc_plikow = f"Znaleziono plików: {len(pliki)}"
+    print(ilosc_plikow)
+    raport.append(ilosc_plikow)
+
+    for sciezka_pliku, rozmiar_mb in pliki:
+        linia = (f"{sciezka_pliku}: {rozmiar_mb:.3f} MB")
+
+        print(linia)
+        raport.append(linia)
+        
+        laczny_rozmiar += rozmiar_mb
+
+    podsumowanie = f"Lączny rozmiar wynosi {laczny_rozmiar:.4f} MB"
+    
+    print(podsumowanie)
+    raport.append(podsumowanie)
+
+
+    plik_raportu = Path("raport_duzych_plikow.txt")
+    plik_raportu.write_text("\n".join(raport), encoding="utf-8")
+
+    print(f"Raport zapisano tutaj: {plik_raportu.resolve()}")
+
+
+if __name__ == "__main__":
+    main()

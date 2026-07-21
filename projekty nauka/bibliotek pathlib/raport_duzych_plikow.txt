@@ -1,0 +1,21 @@
+Znaleziono plików: 19
+E:\vs code\projekty nauka\digital_clock\DS-DIGIT.TTF: 0.024 MB
+E:\vs code\projekty nauka\test_bank.db: 0.012 MB
+E:\vs code\projekty nauka\system bankowy  lepsza baza\bank.db: 0.008 MB
+E:\vs code\projekty nauka\zadania\__pycache__\operacje.cpython-313.pyc: 0.007 MB
+E:\vs code\projekty nauka\filmy\filmy.py: 0.006 MB
+E:\vs code\projekty nauka\system bankowy  lepsza baza\__pycache__\operacje.cpython-313.pyc: 0.006 MB
+E:\vs code\projekty nauka\weatherapp.py: 0.006 MB
+E:\vs code\projekty nauka\menadzer kontaktow\__pycache__\operacje.cpython-313.pyc: 0.006 MB
+E:\vs code\projekty nauka\system bankowy  lepsza baza\__pycache__\baza.cpython-313.pyc: 0.005 MB
+E:\vs code\projekty nauka\zadania\operacje.py: 0.005 MB
+E:\vs code\projekty nauka\biblioteka\biblioteka.py: 0.004 MB
+E:\vs code\projekty nauka\system bankowy  lepsza baza\operacje.py: 0.004 MB
+E:\vs code\projekty nauka\snake_game.py: 0.004 MB
+E:\vs code\projekty nauka\menadzer kontaktow\operacje.py: 0.004 MB
+E:\vs code\projekty nauka\system bankowy  lepsza baza\baza.py: 0.003 MB
+E:\vs code\projekty nauka\lista_aut\lista_aut.py: 0.003 MB
+E:\vs code\projekty nauka\system bankowy  lepsza baza\__pycache__\klasa.cpython-313.pyc: 0.003 MB
+E:\vs code\projekty nauka\stopwatch.py: 0.002 MB
+E:\vs code\projekty nauka\shoping_list\shoping_list.py: 0.002 MB
+Lączny rozmiar wynosi 0.1139 MB
